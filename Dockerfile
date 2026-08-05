@@ -12,5 +12,6 @@ RUN npm run build:prod
 EXPOSE 5555
 
 ENV NODE_ENV=production
+ENV PORT=5555
 
 CMD ["node", "--experimental-json-modules", "./server/bin/www.js"]
