@@ -12,13 +12,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const PACK_NAMES = [
-    "Simple words (recommended)",
-    "Advanced words",
-    "Immature words (13+)",
-    "Naughty words (18+)",
-    "Animals",
-    "Adjectives",
-    "Verbs",
+    "Palabras simples (recomendado)",
+    "Palabras avanzadas",
+    "Animales",
+    "Adjetivos",
 ];
 
 class WordPacks {

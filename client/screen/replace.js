@@ -6,7 +6,7 @@ class Replace extends Screen {
     constructor() {
         super();
         this.id = "#replace";
-        this.setTitle("Choose a player to replace");
+        this.setTitle("Elige un jugador para reemplazar");
     }
 
     initialize(props) {
@@ -36,14 +36,14 @@ class Replace extends Screen {
             });
         } else {
             choices.append(
-                "<p>This game is currently full. If you stay on this page, it " +
-                    "will automatically update to let you know if someone has " +
-                    "left!</p>"
+                "<p>Esta partida está actualmente llena. Si te quedas en esta página, se " +
+                    "actualizará automáticamente para avisarte si alguien se " +
+                    "ha ido!</p>"
             );
         }
 
         Screen.gameCode = gameCode;
-        this.setSubtitle("Ready to join game...");
+        this.setSubtitle("Listo para unirse a la partida...");
         super.show();
     }
 

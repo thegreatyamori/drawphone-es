@@ -57,7 +57,7 @@ class Lobby extends Screen {
 
         this.wordFirstCheckbox.prop("checked", false);
         this.showNeighborsCheckbox.prop("checked", false);
-        this.timeLimitDisplay.text("No time limit");
+        this.timeLimitDisplay.text("Sin límite de tiempo");
         this.turnLimitDisplay.text("N/A");
         this.gameTimeDisplay.text("");
         this.wordPackDropdown.prop("selectedIndex", 0);
@@ -82,7 +82,7 @@ class Lobby extends Screen {
         });
 
         const onActualDisconnect = () => {
-            swal("Connection lost!", "Reloading...", "error");
+            swal("¡Conexión perdida!", "Recargando...", "error");
             ga("send", "exception", {
                 exDescription: "Socket connection lost",
                 exFatal: false,
@@ -138,7 +138,7 @@ class Lobby extends Screen {
                 exDescription: res.error,
                 exFatal: false,
             });
-            swal("Error updating lobby", res.error, "error");
+            swal("Error al actualizar el lobby", res.error, "error");
 
             return;
         }
@@ -150,7 +150,7 @@ class Lobby extends Screen {
             this.title = `Game Code: ${Screen.getGameCodeHTML()}`;
         }
 
-        this.subtitle = "Waiting for players...";
+        this.subtitle = "Esperando jugadores...";
         if (res.event === "updatePlayerList" && res.data.players) {
             this.userList.update(res.data.players);
         }
@@ -213,7 +213,7 @@ class Lobby extends Screen {
         if (name === "wordfirst" && value === true) {
             this.gameSettings
                 .find(`#lobby-settings-wordpack`)
-                .val("Select a word pack...");
+                .val("Selecciona un paquete de palabras...");
         }
     }
 
@@ -238,8 +238,8 @@ class Lobby extends Screen {
             if (this.userList.numberOfPlayers === 1 && ready) {
                 swal(
                     {
-                        title: "Demo mode",
-                        text: "Would you like to play Drawphone with just yourself to see how it works?",
+                        title: "Modo demo",
+                        text: "¿Te gustaría jugar Drawphone solo para ver cómo funciona?",
                         type: "info",
                         showCancelButton: true,
                     },
@@ -251,8 +251,8 @@ class Lobby extends Screen {
                 this.start.bind(this)();
             } else {
                 swal(
-                    "Not ready to start",
-                    "Make sure have selected a word pack, a drawing time limit, and that you have at least four players.",
+                    "No listo para empezar",
+                    "Asegúrate de haber seleccionado un paquete de palabras, un límite de tiempo para dibujar, y que tengas al menos cuatro jugadores.",
                     "error"
                 );
                 ga("send", "event", "Lobby", "disallowed start attempt");
@@ -277,11 +277,11 @@ class Lobby extends Screen {
             const isTurnLimitValid = this.selectedTurnLimit <= this.numPlayers;
 
             const newDisplay = isTurnLimitValid
-                ? `${this.selectedTurnLimit} turns${isMax ? " (max)" : ""}`
+                ? `${this.selectedTurnLimit} turnos${isMax ? " (máx.)" : ""}`
                 : "N/A";
 
             const gameTimeText = isTurnLimitValid
-                ? `(round will take about ${this.selectedTurnLimit} minutes)`
+                ? `(la ronda durará unos ${this.selectedTurnLimit} minutos)`
                 : "";
 
             this.turnLimitDisplay.text(newDisplay);
@@ -351,8 +351,8 @@ class Lobby extends Screen {
 
             const newDisplay =
                 this.selectedTimeLimit === 0
-                    ? "No time limit"
-                    : `${this.selectedTimeLimit} seconds`;
+                    ? "Sin límite de tiempo"
+                    : `${this.selectedTimeLimit} segundos`;
             this.timeLimitDisplay.text(newDisplay);
 
             if (oldTimeLimit === this.selectedTimeLimit) return;
@@ -373,7 +373,7 @@ class Lobby extends Screen {
         const onWordPackDropdownChange = () => {
             const selected = this.wordPackDropdown[0].value;
             this.wordPack =
-                selected === "Select a word pack..." ? false : selected;
+                selected === "Selecciona un paquete de palabras..." ? false : selected;
 
             this.checkIfReadyToStart();
         };
@@ -391,8 +391,8 @@ class Lobby extends Screen {
 
         this.addBotButton.on("click", () => {
             swal(
-                "Bad bot",
-                'Warning! The bots are a little janky. They think most drawings are "rain". But, they are real bots that make their best guesses based on the Mobilenet and Doodlenet machine learning models. 🤖',
+                "Mal bot",
+                '¡Advertencia! Los bots son un poco torpes. Creen que la mayoría de los dibujos son "lluvia". Pero son bots reales que hacen sus mejores suposiciones basándose en los modelos de aprendizaje automático Mobilenet y Doodlenet. 🤖',
                 "warning"
             );
             this.socket.emit("addBotPlayer");

@@ -10,7 +10,7 @@ class Waiting extends Screen {
         super();
 
         this.id = "#waiting";
-        this.setTitle("Waiting for other players...");
+        this.setTitle("Esperando a los demás jugadores...");
         this.userList = new UserList($("#waiting-players"));
     }
 

@@ -48,7 +48,7 @@ class Game extends Screen {
                     this.timeLimit,
                     (timeLeft) => {
                         this.timerDisplay.text(
-                            `${timeLeft} left to finish your drawing`
+                            `${timeLeft} restantes para terminar tu dibujo`
                         );
                     }
                 );
@@ -108,7 +108,7 @@ class Game extends Screen {
         this.show();
 
         if (this.timeLimit > 0) {
-            this.timerDisplay.text("Begin drawing to start the timer.");
+            this.timerDisplay.text("Empieza a dibujar para iniciar el temporizador.");
 
             if (this.timeLimit <= 5) {
                 //if the time limit is less than 5 seconds
@@ -120,7 +120,7 @@ class Game extends Screen {
                 shouldShowUndoButtons = true;
             }
         } else {
-            this.timerDisplay.text("No time limit to draw.");
+            this.timerDisplay.text("Sin límite de tiempo para dibujar.");
             shouldShowUndoButtons = true;
         }
 
@@ -181,13 +181,13 @@ class Game extends Screen {
             //show the previous drawing
             $("#game-word-drawingtoname").attr("src", lastLink.data);
 
-            this.setTitle("What is this a drawing of?");
+            this.setTitle("¿De qué es este dibujo?");
 
             //show the word creator
             this.showWord();
         } else if (lastLinkType === WORD) {
             this.setTitle(
-                `<span class="avoidwrap">Please draw:&nbsp;</span><span class="avoidwrap">${lastLink.data}</span>`
+                `<span class="avoidwrap">Por favor, dibuja:&nbsp;</span><span class="avoidwrap">${lastLink.data}</span>`
             );
 
             //show drawing creator
@@ -197,7 +197,7 @@ class Game extends Screen {
             this.resizeCanvas();
         } else if (lastLinkType === FIRST_WORD) {
             $("#game-word-drawingtoname").removeAttr("src");
-            this.setTitle("What should be drawn?");
+            this.setTitle("¿Qué debería dibujarse?");
 
             //show the word creator
             this.showWord();
@@ -242,8 +242,8 @@ class Game extends Screen {
                 showElement("#game-buttons");
                 showElement("#game-draw-buttons");
                 swal(
-                    "Your picture is blank!",
-                    "Please draw a picture, then try again.",
+                    "¡Tu dibujo está vacío!",
+                    "Por favor, dibuja algo y vuelve a intentarlo.",
                     "info"
                 );
             } else {
@@ -261,8 +261,8 @@ class Game extends Screen {
             if (newLink === "") {
                 this.showWord();
                 swal(
-                    "Your guess is blank!",
-                    "Please enter a guess, then try again.",
+                    "¡Tu suposición está vacía!",
+                    "Por favor, escribe una suposición y vuelve a intentarlo.",
                     "info"
                 );
             } else {
@@ -274,7 +274,7 @@ class Game extends Screen {
     }
 
     sendLink(type, data) {
-        this.setTitle("Sending...");
+        this.setTitle("Enviando...");
 
         this.socket.emit("finishedLink", {
             link: {

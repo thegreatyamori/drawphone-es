@@ -9,95 +9,95 @@ block content
     img.mr-1(src='pencil-alt.svg' alt='' width='18')
     img.ml-1(src='phone-alt.svg' alt='' width='18')
   h1#title Drawphone
-  p#subtitle Telephone with pictures
+  p#subtitle Teléfono con dibujos
   hr
-  div#loading Loading...
+  div#loading Cargando...
   div#mainmenu.d-none
     include announcements.pug
     .btn-toolbar.mt-3
-      a.btn.btn-default.btn-lg.mr-2(href="https://rocketcrab.com/join",type='button') Join Party
-      a.btn.btn-default.btn-lg(href="https://rocketcrab.com/transfer/drawphone",type='button') Start Party
+      a.btn.btn-default.btn-lg.mr-2(href="https://rocketcrab.com/join",type='button') Unirse a la Fiesta
+      a.btn.btn-default.btn-lg(href="https://rocketcrab.com/transfer/drawphone",type='button') Iniciar Fiesta
     .mt-3.mb-3
       |Powered by 
       img.rocketsvg.ml-1(src='https://rocketcrab.com/rocket.svg' alt='' width='16')
       img.crabsvg.ml-1(src='https://rocketcrab.com/crab.svg' alt='' width='16')
       a.rocketcrablink(href="https://rocketcrab.com", target='_blank') rocketcrab.com
     .btn-group-vertical(role="group" aria-label="...")
-      button#archivebtn.btn.btn-default(type='button') View Previous Results
-      button#howbtn.btn.btn-default(type='button') How to Play
+      button#archivebtn.btn.btn-default(type='button') Ver Resultados Anteriores
+      button#howbtn.btn.btn-default(type='button') Cómo Jugar
     br
   div.row.justify-content-center
     div.col
       div#joinmenu.d-none
-        h5 Join a game
+        h5 Unirse a una partida
         form
           .input-container
-            label Game Code:
+            label Código de partida:
             .form-group
               input#joinincode.form-control(type='text', placeholder='abcd', autocomplete='off')
-            label Name:
+            label Nombre:
             .form-group
-              input#joininname.form-control(type='text', placeholder='Use your real name!', maxlength=16)
+              input#joininname.form-control(type='text', placeholder='¡Usa tu nombre real!', maxlength=16)
           .btn-toolbar
-            button#joinmenu-back.btn.btn-default.btn-lg.mr-2(type='button') Back
-            button#joinmenu-go.btn.btn-default.btn-lg(type='submit') Join
+            button#joinmenu-back.btn.btn-default.btn-lg.mr-2(type='button') Atrás
+            button#joinmenu-go.btn.btn-default.btn-lg(type='submit') Unirse
       div#newmenu.d-none
-        h5 Start a game
+        h5 Crear una partida
         form
           .input-container
-            label Name:
+            label Nombre:
             .form-group
-              input#newinname.form-control(type='text', placeholder='Use your real name!', maxlength=16)
+              input#newinname.form-control(type='text', placeholder='¡Usa tu nombre real!', maxlength=16)
           .btn-toolbar 
-            button#newmenu-back.btn.btn-default.btn-lg.mr-2(type='button') Back
-            button#newmenu-go.btn.btn-default.btn-lg(type='submit') Start
+            button#newmenu-back.btn.btn-default.btn-lg.mr-2(type='button') Atrás
+            button#newmenu-go.btn.btn-default.btn-lg(type='submit') Crear
   div#lobby.d-none
     include announcements.pug
     div.row.justify-content-center.mb-4.mt-3
       div.col-sm-8
-        h5 Players
+        h5 Jugadores
         ul#lobby-players.list-unstyled.row
       .mt-2.btn-group-vertical(role="group" aria-label="...")
-        a.btn.btn-default(href="https://drawphone.tannerkrewson.com/archive", target='_blank', type='button') View Results Archive
-        button#lobby-prevres.btn.btn-default(type='button').d-none View Last Round's Results
-      .mt-2 Tip: There is no limit to the number of players that can join!
+        a.btn.btn-default(href="https://drawphone.tannerkrewson.com/archive", target='_blank', type='button') Ver Archivo de Resultados
+        button#lobby-prevres.btn.btn-default(type='button').d-none Ver Resultados de la Última Ronda
+      .mt-2 Consejo: ¡No hay límite de jugadores que pueden unirse!
     div.row.justify-content-center.mb-3
       div#lobby-settings.col-sm-8.d-none
-        h5 Options
-        label Word pack:
+        h5 Opciones
+        label Paquete de palabras:
         select.form-control.lobby-setting#lobby-settings-wordpack.mb-2
-          option(disabled='', selected='') Select a word pack...
+          option(disabled='', selected='') Selecciona un paquete de palabras...
           for item in wordpacks
             option #{item}
-        label Drawing time limit:
+        label Límite de tiempo para dibujar:
         .btn-toolbar.mb-3
           button#timelimit-minus.lobby-setting.btn.btn-default -
-          span#lobby-settings-timelimit Loading...
+          span#lobby-settings-timelimit Cargando...
           button#timelimit-plus.lobby-setting.btn.btn-default +
-        label Number of turns:
+        label Número de turnos:
         .btn-toolbar
           button#turnlimit-minus.lobby-setting.btn.btn-default -
-          span#lobby-settings-turnlimit Loading...
+          span#lobby-settings-turnlimit Cargando...
           button#turnlimit-plus.lobby-setting.btn.btn-default +
-        .mb-3#lobby-settings-gametime Loading...
+        .mb-3#lobby-settings-gametime Cargando...
         .checkboxes.mb-2
           .custom-control.custom-switch
             input#lobby-settings-wordfirst.custom-control-input.lobby-setting(type='checkbox')
-            label.custom-control-label(for='lobby-settings-wordfirst') Players write first word
+            label.custom-control-label(for='lobby-settings-wordfirst') Los jugadores escriben la primera palabra
           //- TODO: make this work again
             .custom-control.custom-switch
               input#lobby-settings-showNeighbors.custom-control-input.lobby-setting(type='checkbox')
               label.custom-control-label(for='lobby-settings-showNeighbors') Show who players are passing to and from
         .btn-toolbar.mb-3#lobby-settings-bots.d-none
-          button#lobby-settings-addbot.btn.btn-default.mr-2(type='button') Add Bot
-          button#lobby-settings-removebot.btn.btn-default(type='button') Remove Bot
+          button#lobby-settings-addbot.btn.btn-default.mr-2(type='button') Añadir Bot
+          button#lobby-settings-removebot.btn.btn-default(type='button') Quitar Bot
     .btn-toolbar.mb-4
-      button#lobby-leave.btn.btn-default.btn-lg.mr-2(type='button') Leave Game
-      button#lobby-start.btn.btn-default.btn-lg.disabled.d-none(type='button') Start Game
+      button#lobby-leave.btn.btn-default.btn-lg.mr-2(type='button') Salir de la Partida
+      button#lobby-start.btn.btn-default.btn-lg.disabled.d-none(type='button') Iniciar Partida
   div#game.d-none
     div#neighboring-players-container.neighboring-players-container
       div#previous-player-container.player-name.d-none
-        div Receiving from
+        div Recibiendo de
         div#previous-player
       span#previous-player-arrow
         img(src='arrow-right.svg' alt='right-arrow' width='24')
@@ -105,7 +105,7 @@ block content
       span#next-player-arrow
         img(src='arrow-right.svg' alt='right-arrow' width='24')
       div#next-player-container.player-name
-        div Sending to
+        div Enviando a
         div#next-player
     div#game-drawing.d-none
       h5#game-timer
@@ -114,8 +114,8 @@ block content
       img#game-word-drawingtoname.drawing
       br
       br
-      div Enter your answer here:
-      input#game-word-in.form-control(type='text', placeholder='Tap here to type!', autocomplete='off')  
+      div Introduce tu respuesta aquí:
+      input#game-word-in.form-control(type='text', placeholder='¡Toca aquí para escribir!', autocomplete='off')  
     div.row#game-draw-buttons.d-none
       div.col-md-6.mt-2
         div.input-group
@@ -128,13 +128,13 @@ block content
       div.col-md-6.mt-2
         div.input-group
           div.input-group-prepend
-            span.input-group-text Size
+            span.input-group-text Tamaño
           .form-control(style='display: flex;justify-content: center;')
             input#game-drawing-brushsize(type='range', value='5', min='1', max='60')
     .btn-toolbar#game-buttons.d-none.mt-3
-      button#game-drawing-undo.btn.btn-default.btn-lg.disabled.mr-2(type='button') Undo
-      button#game-drawing-redo.btn.btn-default.btn-lg.disabled.mr-2(type='button') Redo
-      button#game-send.btn.btn-default.btn-lg(type='button') Done
+      button#game-drawing-undo.btn.btn-default.btn-lg.disabled.mr-2(type='button') Deshacer
+      button#game-drawing-redo.btn.btn-default.btn-lg.disabled.mr-2(type='button') Rehacer
+      button#game-send.btn.btn-default.btn-lg(type='button') Hecho
   div#result.d-none
     div#result-content
     br
@@ -142,24 +142,24 @@ block content
     br
     br
     .btn-toolbar#result-buttons
-      button#result-done.btn.btn-default.btn-lg(type='button') Done
+      button#result-done.btn.btn-default.btn-lg(type='button') Hecho
   div#waiting.d-none
     div.row.justify-content-center
       div.col-sm-8
-        h5 Still waiting for:
+        h5 Esperando a:
         ul#waiting-players.list-unstyled.row
         div#waiting-hostmsg.d-none
           br
-          h5 You are the host!
-          p Tap a player's box to kick them!
+          h5 ¡Eres el anfitrión!
+          p ¡Toca la casilla de un jugador para expulsarlo!
         div#waiting-disconnectedmsg.d-none
           br
-          h5 Someone is disconnected!
-          p They are marked by a grey box above. The game will continue when 
-            | someone joins this game to take their place. You can also tap 
-            | their box to replace them with a bot!
+          h5 ¡Alguien está desconectado!
+          p Está marcado con una casilla gris arriba. El juego continuará cuando 
+            | alguien se una a esta partida para ocupar su lugar. También puedes 
+            | tocar su casilla para reemplazarlo con un bot.
   div#replace.d-none
     div#replace-choices
     br
     .btn-toolbar#replace-buttons
-      button#replace-leave.btn.btn-default.btn-lg(type='button') Leave Game
+      button#replace-leave.btn.btn-default.btn-lg(type='button') Salir de la Partida
