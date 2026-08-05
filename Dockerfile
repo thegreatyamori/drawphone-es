@@ -9,7 +9,7 @@ COPY . .
 
 RUN npm run build:prod
 
-EXPOSE 3000
+EXPOSE 5555
 
 ENV NODE_ENV=production
 
