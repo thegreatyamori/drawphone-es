@@ -16,6 +16,7 @@ const PACK_NAMES = [
     "Palabras avanzadas",
     "Animales",
     "Adjetivos",
+    "Verbos",
 ];
 
 class WordPacks {
