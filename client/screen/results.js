@@ -42,8 +42,8 @@ class Results extends Screen {
     render(chainToShow, allChains) {
         const chainNumber = allChains.indexOf(chainToShow);
 
-        this.setTitle(`Results #${chainNumber + 1}`);
-        const subtitle = `${chainToShow.owner.name} should present these results to the group!`;
+        this.setTitle(`Resultados #${chainNumber + 1}`);
+        const subtitle = `${chainToShow.owner.name} debería presentar estos resultados al grupo!`;
         this.setSubtitle(subtitle);
         this.displayChain(chainToShow);
         this.displayOtherChainButtons(allChains, chainToShow);
@@ -57,19 +57,19 @@ class Results extends Screen {
             const link = links[i];
             if (i === 0 && link.type === WORD) {
                 results.append(
-                    `<h4>The first word:</h4><h1 class="mb-4">${link.data}</h1>`
+                    `<h4>La primera palabra:</h4><h1 class="mb-4">${link.data}</h1>`
                 );
             } else if (i === 1 && links[0].type === FIRST_WORD) {
                 results.append(
-                    `<h4>${link.player.name} wanted someone to draw:</h4><h1 class="mb-4">${link.data}</h1>`
+                    `<h4>${link.player.name} quería que alguien dibujara:</h4><h1 class="mb-4">${link.data}</h1>`
                 );
             } else if (link.type === DRAWING) {
                 results.append(
-                    `<h4>${link.player.name} drew:</h4><img class="drawing mb-4" src="${link.data}"></img>`
+                    `<h4>${link.player.name} dibujó:</h4><img class="drawing mb-4" src="${link.data}"></img>`
                 );
             } else if (link.type === WORD) {
                 results.append(
-                    `<h4>${link.player.name} thought that was:</h4><h1 class="mb-4">${link.data}</h1>`
+                    `<h4>${link.player.name} pensó que era:</h4><h1 class="mb-4">${link.data}</h1>`
                 );
             }
         }
@@ -77,8 +77,8 @@ class Results extends Screen {
         let wentFromBox = "";
         wentFromBox += '<br><div class="well">';
         const firstIndex = links[0].type === FIRST_WORD ? 1 : 0;
-        wentFromBox += `<h4>You started with:</h4><h1>${links[firstIndex].data}</h1><br>`;
-        wentFromBox += `<h4>and ended up with:</h4><h1>${
+        wentFromBox += `<h4>Empezaste con:</h4><h1>${links[firstIndex].data}</h1><br>`;
+        wentFromBox += `<h4>y terminaste con:</h4><h1>${
             links[links.length - 1].data
         }</h1>`;
         wentFromBox += "</div>";
@@ -90,7 +90,7 @@ class Results extends Screen {
         others.empty();
 
         if (chainsToList.length > 1) {
-            others.append("<h4>View more results:</h4>");
+            others.append("<h4>Ver más resultados:</h4>");
         }
 
         for (let i = 0; i < chainsToList.length; i++) {

@@ -52,19 +52,19 @@ export const promptKickPlayer = (tappedPlayer, socket) => {
 
     swal(
         {
-            title: `Kick ${tappedPlayer.name}?`,
-            text: "Someone will have to join this game to replace them. (Or, you could use a bot!)",
+            title: `¿Expulsar a ${tappedPlayer.name}?`,
+            text: "Alguien tendrá que unirse a esta partida para reemplazarlo. (¡O podrías usar un bot!)",
             type: "warning",
             showCancelButton: true,
             confirmButtonClass: "btn-danger",
-            confirmButtonText: "Kick",
+            confirmButtonText: "Expulsar",
             closeOnConfirm: false,
         },
         () => {
             socket.emit("kickPlayer", {
                 playerToKick: tappedPlayer,
             });
-            swal("Done!", `${tappedPlayer.name} was kicked.`, "success");
+            swal("¡Hecho!", `${tappedPlayer.name} fue expulsado.`, "success");
             ga("send", "event", "User list", "Host kick player");
         }
     );
@@ -76,12 +76,12 @@ export const promptReplaceBot = (tappedPlayer, socket) => {
 
     swal(
         {
-            title: `Replace ${tappedPlayer.name} with a bot?`,
-            text: "Fair warning, the bots aren't very smart!",
+            title: `¿Reemplazar a ${tappedPlayer.name} con un bot?`,
+            text: "¡Advertencia justa, los bots no son muy listos!",
             type: "warning",
             showCancelButton: true,
             confirmButtonClass: "btn-danger",
-            confirmButtonText: "Replace",
+            confirmButtonText: "Reemplazar",
             closeOnConfirm: false,
         },
         () => {
@@ -89,8 +89,8 @@ export const promptReplaceBot = (tappedPlayer, socket) => {
                 playerToReplaceWithBot: tappedPlayer,
             });
             swal(
-                "Done!",
-                `${tappedPlayer.name} was replaced with a bot.`,
+                "¡Hecho!",
+                `${tappedPlayer.name} fue reemplazado con un bot.`,
                 "success"
             );
             ga("send", "event", "User list", "Host replace player with a bot");

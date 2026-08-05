@@ -22,12 +22,12 @@ export default ({ drawphone, io }) => {
             if (!thisGame) {
                 socket.emit("joinGameRes", {
                     success: false,
-                    error: "Game not found",
+                    error: "Partida no encontrada",
                 });
             } else if (theName.length <= 2 || theName.length > 16) {
                 socket.emit("joinGameRes", {
                     success: false,
-                    error: "Name too short/long",
+                    error: "Nombre demasiado corto/largo",
                 });
             } else {
                 const thisRound = thisGame.currentRound;
@@ -64,7 +64,7 @@ export default ({ drawphone, io }) => {
             } else {
                 socket.emit("joinGameRes", {
                     success: false,
-                    error: "Name too short/long",
+                    error: "Nombre demasiado corto/largo",
                 });
             }
         });
@@ -130,7 +130,7 @@ export default ({ drawphone, io }) => {
 
             const oldPlayer = playerToReplaceWithBot;
             const botPlayer = thisGame.newBotPlayer(
-                `👻 The Ghost of ${oldPlayer.name}`
+                `👻 El Fantasma de ${oldPlayer.name}`
             );
             const thisRound = thisGame.currentRound;
 
@@ -170,14 +170,14 @@ export default ({ drawphone, io }) => {
 const sendLockedError = (socket, minutesUntilRestart) => {
     socket.emit("joinGameRes", {
         success: false,
-        error: "Oopsie woopsie",
-        content: `The Drawphone server is pending an update, and will be restarted ${getTimeLeft(
+        error: "Vaya, vaya",
+        content: `El servidor de Drawphone está pendiente de una actualización, y se reiniciará ${getTimeLeft(
             minutesUntilRestart
-        )}. Try again then! <div style="font-size: .75em;margin-top:.8em">If you're the techy type, check the update status <a href="https://github.com/tannerkrewson/drawphone/actions" target="_blank" rel="noopener noreferrer">here</a>.</div>`,
+        )}. ¡Vuelve a intentarlo entonces! <div style="font-size: .75em;margin-top:.8em">Si eres el tipo tecnológico, revisa el estado de la actualización <a href="https://github.com/tannerkrewson/drawphone/actions" target="_blank" rel="noopener noreferrer">aquí</a>.</div>`,
     });
 };
 
 const getTimeLeft = (minutes) => {
-    if (minutes <= 0) return "momentarily";
-    return `in ${minutes} minute${parseInt(minutes) !== 1 ? "s" : ""}`;
+    if (minutes <= 0) return "en breve";
+    return `en ${minutes} minuto${parseInt(minutes) !== 1 ? "s" : ""}`;
 };

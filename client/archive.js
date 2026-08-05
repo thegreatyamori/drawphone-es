@@ -7,7 +7,7 @@ export async function renderArchive(drawphone) {
     const archiveContent = $("#archive-content");
     const result = $("#result");
     if (!localStorage) {
-        archiveContent.text("This browser does not support local storage.");
+        archiveContent.text("Este navegador no soporta almacenamiento local.");
         return;
     }
 
@@ -15,7 +15,7 @@ export async function renderArchive(drawphone) {
 
     if (resultsList.length === 0) {
         archiveContent.text(
-            "No results found on this device. Play a game first!"
+            "No se encontraron resultados en este dispositivo. ¡Juega una partida primero!"
         );
         return;
     }
@@ -24,7 +24,7 @@ export async function renderArchive(drawphone) {
     for (let i = 0; i < resultsList.length; i++) {
         const results = resultsList[i];
 
-        const theDate = new Date(results.date).toLocaleDateString("en-us", {
+        const theDate = new Date(results.date).toLocaleDateString("es", {
             weekday: "long",
             year: "numeric",
             month: "long",
@@ -96,7 +96,7 @@ function initArchiveDb() {
 
 function getQuickInfoStringOfResults({ date, chains }) {
     let result = "";
-    result += new Date(date).toLocaleTimeString("en-us", {
+    result += new Date(date).toLocaleTimeString("es", {
         hour: "2-digit",
         minute: "2-digit",
         hour12: true,
@@ -105,7 +105,7 @@ function getQuickInfoStringOfResults({ date, chains }) {
 
     const firstChainLinks = chains[0].links;
     result += firstChainLinks[0].data || firstChainLinks[1].data;
-    result += " to ";
+    result += " a ";
     result += firstChainLinks[firstChainLinks.length - 1].data;
 
     if (chains.length === 1) return result;
@@ -113,7 +113,7 @@ function getQuickInfoStringOfResults({ date, chains }) {
     result += ", ";
     const secondChainLinks = chains[1].links;
     result += secondChainLinks[0].data || secondChainLinks[1].data;
-    result += " to ";
+    result += " a ";
     result += secondChainLinks[secondChainLinks.length - 1].data;
     result += ", etc.";
     return result;
